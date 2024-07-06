@@ -17,12 +17,12 @@ struct PlaceCardView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
             HStack {
-                VStack {
+                VStack(alignment: .leading) {
                     Text(place.title)
                     Text(place.description)
                 }
+                .padding([.bottom, .leading])
             }
-            .padding()
         }
         .clipShape(RoundedRectangle(cornerRadius: 8))
         .overlay(
@@ -30,7 +30,7 @@ struct PlaceCardView: View {
                 .stroke(Color(.gray))
                 .shadow(radius: 0.5)
         )
-        .padding([.top, .horizontal])
+        .padding(.top)
     }
 }
 
