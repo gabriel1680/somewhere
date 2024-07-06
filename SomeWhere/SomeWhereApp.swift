@@ -9,11 +9,15 @@ import SwiftUI
 
 @main
 struct SomeWhereApp: App {
+    
+    @StateObject var placeListViewModel: PlaceListViewModel = PlaceListViewModel()
+    
     var body: some Scene {
         WindowGroup {
             NavigationView {
                 PlaceListView()
             }
         }
+        .environmentObject(placeListViewModel)
     }
 }
