@@ -15,10 +15,13 @@ struct PlaceListView: View {
         List {
             ForEach(viewModel.items) { item in
                 PlaceCardView(place: item)
+                    .listRowSeparator(.hidden)
             }
             .onDelete(perform: viewModel.removeItem)
+            .listRowBackground(Color.white)
         }
-        .navigationTitle("Locais")
+        .scrollContentBackground(.hidden)
+        .navigationTitle("Lista de desejos ✨")
         .toolbar {
             ToolbarItemGroup(placement: .topBarTrailing) {
                 NavigationLink(destination: AddPlaceFormView(), label: {

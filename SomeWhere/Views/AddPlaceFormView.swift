@@ -16,19 +16,20 @@ struct AddPlaceFormView: View {
     
     var body: some View {
         ScrollView {
-            VStack {
-                TextField("Insert the Title", text: $titleText)
+            VStack (spacing: 16) {
+                TextField("Nome do restaurante", text: $titleText)
                     .padding(.horizontal)
                     .frame(height: 55)
                     .background(Color(white: 0.9, opacity: 0.7))
                     .cornerRadius(6)
-                TextField("Insert the Description", text: $descriptionText)
+                TextField("Descrição", text: $descriptionText)
                     .padding(.horizontal)
                     .frame(height: 55)
                     .background(Color(white: 0.9, opacity: 0.7))
                     .cornerRadius(6)
+                Spacer()
                 Button(action: addPalce, label: {
-                    Text("Save")
+                    Text("Salvar")
                         .textCase(.uppercase)
                         .font(.headline)
                         .foregroundColor(.white)
@@ -36,12 +37,12 @@ struct AddPlaceFormView: View {
                         .frame(height: 55)
                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
                         .background(Color.accentColor)
-                        .cornerRadius(6)
+                        .cornerRadius(30)
                 })
             }
-            .padding(14)
+            .padding(16)
         }
-        .navigationTitle("Add something")
+        .navigationTitle("Novo Desejo")
     }
     
     func addPalce() {
@@ -51,6 +52,8 @@ struct AddPlaceFormView: View {
 }
 
 #Preview {
-    AddPlaceFormView()
-        .environmentObject(PlaceListViewModel())
+    NavigationView {
+        AddPlaceFormView()
+            .environmentObject(PlaceListViewModel())
+    }
 }

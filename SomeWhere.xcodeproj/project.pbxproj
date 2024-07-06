@@ -102,9 +102,9 @@
 		6EC914DB2C39C13A0088C61F /* SomeWhere */ = {
 			isa = PBXGroup;
 			children = (
+				6EC914DC2C39C13A0088C61F /* SomeWhereApp.swift */,
 				6EC915112C39D3E60088C61F /* ViewModels */,
 				6EC9150E2C39CE3C0088C61F /* Models */,
-				6EC914DC2C39C13A0088C61F /* SomeWhereApp.swift */,
 				6EC915062C39C18D0088C61F /* Views */,
 				6EC914E02C39C13B0088C61F /* Assets.xcassets */,
 				6EC914E22C39C13B0088C61F /* Preview Content */,

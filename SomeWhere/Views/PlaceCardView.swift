@@ -13,15 +13,24 @@ struct PlaceCardView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Image("morning-workout")
+            Image(place.image ?? "card-placeholder")
                 .resizable()
-                .frame(width: 100, height: 100)
-            Text(place.title)
+                .aspectRatio(contentMode: .fit)
             HStack {
-                Text(place.description)
-                Spacer()
+                VStack {
+                    Text(place.title)
+                    Text(place.description)
+                }
             }
+            .padding()
         }
+        .clipShape(RoundedRectangle(cornerRadius: 8))
+        .overlay(
+            RoundedRectangle(cornerRadius: 8)
+                .stroke(Color(.gray))
+                .shadow(radius: 0.5)
+        )
+        .padding([.top, .horizontal])
     }
 }
 

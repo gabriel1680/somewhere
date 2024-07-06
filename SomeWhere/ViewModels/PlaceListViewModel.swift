@@ -12,16 +12,15 @@ class PlaceListViewModel: ObservableObject {
     @Published var items: [PlaceModel] = []
     
     init() {
-        getItems()
+        items.append(contentsOf: getItems())
     }
     
-    func getItems() {
-        let newItems = [
+    func getItems() -> [PlaceModel] {
+        return [
             PlaceModel(title: "First Title", description: "Description 1"),
             PlaceModel(title: "Second Title", description: "Lorem Ipsum"),
             PlaceModel(title: "Third Title", description: "Description 6")
         ]
-        items.append(contentsOf: newItems)
     }
     
     func removeItem(indexSet: IndexSet) {
