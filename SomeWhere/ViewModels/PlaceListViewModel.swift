@@ -20,49 +20,44 @@ class PlaceListViewModel: ObservableObject {
     }
     
     public func fetchPlaces() {
-        Task {
-            do {
-                items = try await self.repository.fetch()
-            } catch {
-                print("ERROR: Failed to fetch places error: \(error)")
-            }
-        }
+        executeInBackground("fetch places", {
+            self.items = try await self.repository.fetch()
+        })
     }
     
     public func removeItem(_ indexSet: IndexSet) {
+        print("called < vm.removeItem()")
         guard let idx = indexSet.first else { return }
         let model = items[idx]
         items.remove(atOffsets: indexSet)
-        Task {
-            do {
-                try await repository.remove(model)
-            } catch {
-                print("ERROR: Failed to remove place error: \(error)")
-            }
-        }
+        executeInBackground("remove place", {
+            try await self.repository.remove(model)
+        })
     }
     
     public func addPlace(title: String, description: String) {
         let model: PlaceModel = PlaceModel(title: title, description: description)
         items.append(model)
-        Task {
-            do {
-                try await repository.save(model)
-            } catch {
-                print("ERROR: Failed to save place error: \(error)")
-            }
-        }
+        executeInBackground("save place", {
+            try await self.repository.save(model)
+        })
     }
     
     public func updatePlace(_ id: String, _ title: String, _ description: String) {
         guard let idx = items.firstIndex(where: { $0.id.elementsEqual(id) }) else { return }
         let model = items[idx]
         items[idx] = model.update(title, description)
+        executeInBackground("update place", {
+            try await self.repository.update(self.items[idx])
+        })
+    }
+    
+    private func executeInBackground(_ opName: String, _ action: @escaping () async throws -> Void) {
         Task {
             do {
-                try await repository.update(items[idx])
+                try await action()
             } catch {
-                print("ERROR: Failed to remove place error: \(error)")
+                print("ERROR: Failed to \(opName): \(error)")
             }
         }
     }
