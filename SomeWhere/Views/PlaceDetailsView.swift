@@ -5,6 +5,7 @@
 //  Created by Gabriel Lopes on 06/07/24.
 //
 
+import PhotosUI
 import SwiftUI
 
 struct PlaceDetailsView: View {
@@ -13,6 +14,8 @@ struct PlaceDetailsView: View {
     
     @State private var title = ""
     @State private var description = ""
+    @State var image: Image? = nil
+    @State var imageItem: PhotosPickerItem? = nil
     
     var place: PlaceModel
     
@@ -62,9 +65,7 @@ struct PlaceDetailsView: View {
     }
     
     private func updatePlace() {
-        Task {
-            await viewModel.updatePlace(place.id, title, description)
-        }
+        viewModel.updatePlace(place.id, title, description)
         presentationMode.wrappedValue.dismiss()
     }
     

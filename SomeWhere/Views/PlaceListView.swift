@@ -29,9 +29,7 @@ struct PlaceListView: View {
             }
         }
         .onAppear() {
-            Task {
-                await viewModel.fetchPlaces()
-            }
+            viewModel.fetchPlaces()
         }
     }
 
@@ -61,14 +59,8 @@ struct FilledPlaceListView: View {
                 })
                 .listRowSeparator(.hidden)
             }
-            .onDelete(perform: remove)
+            .onDelete(perform: viewModel.removeItem)
             .listRowBackground(Color.white)
-        }
-    }
-    
-    func remove(indexSet: IndexSet) {
-        Task {
-            await viewModel.removeItem(indexSet)
         }
     }
 }

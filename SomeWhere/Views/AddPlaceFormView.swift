@@ -32,15 +32,7 @@ struct AddPlaceFormView: View {
                     .background(Color(white: 0.9, opacity: 0.7))
                     .cornerRadius(6)
                 PhotosPicker("Adicionar imagem", selection: $imageItem, matching: .images)
-                    .onChange(of: imageItem) {
-                        Task {
-                            if let loaded = try? await imageItem?.loadTransferable(type: Image.self) {
-                                image = loaded
-                            } else {
-                                print("Failed")
-                            }
-                        }
-                    }
+                    .onChange(of: imageItem, onImageChange)
                 image?
                     .resizable()
                     .scaledToFit()
@@ -68,10 +60,18 @@ struct AddPlaceFormView: View {
     }
     
     func addPalce() {
-        Task {
-            await viewModel.addPlace(title: titleText, description: descriptionText)
-        }
+        viewModel.addPlace(title: titleText, description: descriptionText)
         presentationMode.wrappedValue.dismiss()
+    }
+    
+    func onImageChange() {
+        Task {
+            if let loaded = try? await imageItem?.loadTransferable(type: Image.self) {
+                image = loaded
+            } else {
+                print("Failed")
+            }
+        }
     }
 }
 
