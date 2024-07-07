@@ -72,6 +72,6 @@ struct AddPlaceFormView: View {
 #Preview {
     NavigationView {
         AddPlaceFormView()
-            .environmentObject(PlaceListViewModel())
+            .environmentObject(PlaceListViewModelFactory.createForPreview())
     }
 }

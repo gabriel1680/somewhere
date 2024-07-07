@@ -9,25 +9,28 @@ import Foundation
 
 class PlaceListViewModel: ObservableObject {
     
-    @Published var items: [PlaceModel] = []
+    @Published public var items = [PlaceModel]()
     
-    init() {
-        items.append(contentsOf: getItems())
+    private let service: PlaceRepository
+    
+    init(_ repository: PlaceRepository) {
+        self.service = repository
+        Task { await fetchPlaces() }
     }
     
-    func getItems() -> [PlaceModel] {
-        return [
-            PlaceModel(title: "First Title", description: "Description 1"),
-            PlaceModel(title: "Second Title", description: "Lorem Ipsum"),
-            PlaceModel(title: "Third Title", description: "Description 6")
-        ]
+    public func fetchPlaces() async {
+        do {
+            items = try await self.service.fetch()
+        } catch {
+            print("ERROR: Failed to fetch places with error: \(error)")
+        }
     }
     
-    func removeItem(indexSet: IndexSet) {
+    public func removeItem(indexSet: IndexSet) {
         items.remove(atOffsets: indexSet)
     }
     
-    func addPlace(title: String, description: String) {
+    public func addPlace(title: String, description: String) {
         items.append(PlaceModel(title: title, description: description))
     }
 }

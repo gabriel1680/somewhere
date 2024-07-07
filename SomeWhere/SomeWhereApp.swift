@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct SomeWhereApp: App {
     
-    @StateObject var placeListViewModel: PlaceListViewModel = PlaceListViewModel()
+    @StateObject var placeListViewModel = PlaceListViewModelFactory.createForPreview()
     
     var body: some Scene {
         WindowGroup {
@@ -21,3 +21,5 @@ struct SomeWhereApp: App {
         .environmentObject(placeListViewModel)
     }
 }
+
+

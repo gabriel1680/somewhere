@@ -36,7 +36,7 @@ struct PlaceListView: View {
     NavigationView {
         PlaceListView()
     }
-    .environmentObject(PlaceListViewModel())
+    .environmentObject(PlaceListViewModelFactory.createForPreview())
 }
 
 
