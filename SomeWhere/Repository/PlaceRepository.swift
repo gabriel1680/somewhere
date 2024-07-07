@@ -11,4 +11,5 @@ protocol PlaceRepository {
     func fetch() async throws -> [PlaceModel]
     func save(_ place: PlaceModel) async throws
     func remove(_ place: PlaceModel) async throws
+    func update(_ place: PlaceModel) async throws
 }

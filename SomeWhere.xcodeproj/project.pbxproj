@@ -22,6 +22,7 @@
 		6EC915242C3A12E60088C61F /* PlaceDataMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC915232C3A12E60088C61F /* PlaceDataMock.swift */; };
 		6EC915262C3A13AB0088C61F /* MemoryPlaceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC915252C3A13AB0088C61F /* MemoryPlaceRepository.swift */; };
 		6EC915282C3A14080088C61F /* PlaceListViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC915272C3A14080088C61F /* PlaceListViewModelFactory.swift */; };
+		6EC9152A2C3A1D850088C61F /* PlaceDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC915292C3A1D850088C61F /* PlaceDetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		6EC915232C3A12E60088C61F /* PlaceDataMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDataMock.swift; sourceTree = "<group>"; };
 		6EC915252C3A13AB0088C61F /* MemoryPlaceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryPlaceRepository.swift; sourceTree = "<group>"; };
 		6EC915272C3A14080088C61F /* PlaceListViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceListViewModelFactory.swift; sourceTree = "<group>"; };
+		6EC915292C3A1D850088C61F /* PlaceDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 				6EC915072C39C1A20088C61F /* PlaceListView.swift */,
 				6EC915092C39C3380088C61F /* PlaceCardView.swift */,
 				6EC9150C2C39C7330088C61F /* AddPlaceFormView.swift */,
+				6EC915292C3A1D850088C61F /* PlaceDetailsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 			files = (
 				6EC915262C3A13AB0088C61F /* MemoryPlaceRepository.swift in Sources */,
 				6EC915082C39C1A20088C61F /* PlaceListView.swift in Sources */,
+				6EC9152A2C3A1D850088C61F /* PlaceDetailsView.swift in Sources */,
 				6EC915212C3A109B0088C61F /* PlaceRepository.swift in Sources */,
 				6EC9150A2C39C3380088C61F /* PlaceCardView.swift in Sources */,
 				6EC915132C39D40C0088C61F /* PlaceListViewModel.swift in Sources */,

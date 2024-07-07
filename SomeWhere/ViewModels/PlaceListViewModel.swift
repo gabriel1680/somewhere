@@ -7,11 +7,13 @@
 
 import Foundation
 
+@Observable
 class PlaceListViewModel: ObservableObject {
     
-    @Published public var items = [PlaceModel]()
-    
+    @ObservationIgnored
     private let repository: PlaceRepository
+    
+    public var items = [PlaceModel]()
     
     init(_ repository: PlaceRepository) {
         self.repository = repository
@@ -43,6 +45,17 @@ class PlaceListViewModel: ObservableObject {
             try await repository.save(model)
         } catch {
             print("ERROR: Failed to save place error: \(error)")
+        }
+    }
+    
+    public func updatePlace(_ id: String, _ title: String, _ description: String) async {
+        do {
+            guard let idx = items.firstIndex(where: { $0.id.elementsEqual(id) }) else { return }
+            let model = items[idx]
+            items[idx] = model.update(title, description)
+            try await repository.update(items[idx])
+        } catch {
+            print("ERROR: Failed to remove place error: \(error)")
         }
     }
 }

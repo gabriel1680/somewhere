@@ -56,8 +56,10 @@ struct FilledPlaceListView: View {
     var body: some View {
         List {
             ForEach(viewModel.items) { item in
-                PlaceCardView(place: item)
-                    .listRowSeparator(.hidden)
+                NavigationLink(destination: PlaceDetailsView(place: item), label: {
+                    PlaceCardView(place: item)
+                        .listRowSeparator(.hidden)
+                })
             }
             .onDelete(perform: remove)
             .listRowBackground(Color.white)
