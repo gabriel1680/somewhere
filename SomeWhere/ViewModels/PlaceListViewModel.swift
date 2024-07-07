@@ -15,7 +15,6 @@ class PlaceListViewModel: ObservableObject {
     
     init(_ repository: PlaceRepository) {
         self.service = repository
-        Task { await fetchPlaces() }
     }
     
     public func fetchPlaces() async {

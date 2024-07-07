@@ -28,6 +28,11 @@ struct PlaceListView: View {
                 })
             }
         }
+        .onAppear() {
+            Task {
+                await viewModel.fetchPlaces()
+            }
+        }
     }
 
 }

@@ -48,7 +48,6 @@ struct AddPlaceFormView: View {
                 Spacer()
                 Button(action: addPalce, label: {
                     Text("Salvar")
-                        .textCase(.uppercase)
                         .font(.headline)
                         .foregroundColor(.white)
                         .fontWeight(.bold)
