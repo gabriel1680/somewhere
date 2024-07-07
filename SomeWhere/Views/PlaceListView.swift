@@ -58,8 +58,8 @@ struct FilledPlaceListView: View {
             ForEach(viewModel.items) { item in
                 NavigationLink(destination: PlaceDetailsView(place: item), label: {
                     PlaceCardView(place: item)
-                        .listRowSeparator(.hidden)
                 })
+                .listRowSeparator(.hidden)
             }
             .onDelete(perform: remove)
             .listRowBackground(Color.white)
