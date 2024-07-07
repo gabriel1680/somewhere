@@ -59,8 +59,14 @@ struct FilledPlaceListView: View {
                 PlaceCardView(place: item)
                     .listRowSeparator(.hidden)
             }
-            .onDelete(perform: viewModel.removeItem)
+            .onDelete(perform: remove)
             .listRowBackground(Color.white)
+        }
+    }
+    
+    func remove(indexSet: IndexSet) {
+        Task {
+            await viewModel.removeItem(indexSet)
         }
     }
 }

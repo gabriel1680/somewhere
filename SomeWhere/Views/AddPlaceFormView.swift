@@ -63,7 +63,9 @@ struct AddPlaceFormView: View {
     }
     
     func addPalce() {
-        viewModel.addPlace(title: titleText, description: descriptionText)
+        Task {
+            await viewModel.addPlace(title: titleText, description: descriptionText)
+        }
         presentationMode.wrappedValue.dismiss()
     }
 }
