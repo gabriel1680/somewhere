@@ -21,7 +21,7 @@ struct AddPlaceFormView: View {
     var body: some View {
         ScrollView {
             VStack (spacing: 16) {
-                TextField("Nome do restaurante", text: $titleText)
+                TextField("Nome do local", text: $titleText)
                     .padding(.horizontal)
                     .frame(height: 55)
                     .background(Color(white: 0.9, opacity: 0.7))
@@ -56,10 +56,15 @@ struct AddPlaceFormView: View {
                         .background(Color.accentColor)
                         .cornerRadius(30)
                 })
+                .disabled(isFormInvalid())
             }
             .padding(16)
         }
-        .navigationTitle("Novo Desejo")
+        .navigationTitle("Próxima parada")
+    }
+    
+    func isFormInvalid() -> Bool {
+        return titleText.isEmpty || titleText.count < 3 || descriptionText.isEmpty || descriptionText.count < 5
     }
     
     func addPalce() {
