@@ -28,7 +28,6 @@ struct PlaceCardView: View {
         .overlay(
             RoundedRectangle(cornerRadius: 8)
                 .stroke(Color(.gray))
-                .shadow(radius: 0.5)
         )
         .padding(.top)
     }
