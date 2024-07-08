@@ -36,7 +36,7 @@ class PlaceListViewModel: ObservableObject {
     }
     
     public func addPlace(title: String, description: String) {
-        let model: PlaceModel = PlaceModel(title: title, description: description)
+        let model: PlaceModel = PlaceModel(title, description)
         items.append(model)
         executeInBackground("save place", {
             try await self.repository.save(model)

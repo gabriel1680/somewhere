@@ -35,8 +35,8 @@ struct PlaceCardView: View {
 
 #Preview {
     Group {
-        PlaceCardView(place: PlaceModel(title: "Title 1",  description: "description"))
-        PlaceCardView(place: PlaceModel(title: "Title 2",  description: "description 2"))
+        PlaceCardView(place: PlaceDataMock.places[0])
     }
     .previewLayout(.sizeThatFits)
+    .padding()
 }

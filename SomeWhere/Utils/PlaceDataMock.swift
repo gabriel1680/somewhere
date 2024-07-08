@@ -9,9 +9,9 @@ import Foundation
 
 struct PlaceDataMock {
     public static var places: [PlaceModel] = [
-        .init(title: "First Title", description: "First massive description of place"),
-        .init(title: "Second Title", description: "Second medium description"),
-        .init(title: "Third Title", description: "Third tiny desc"),
-        .init(title: "Fourth Title", description: "Fourth massive description of place")
+        .init("First Title", "First massive description of place"),
+        .init("Second Title", "Second medium description"),
+        .init("Third Title", "Third tiny desc"),
+        .init("Fourth Title", "Fourth massive description of place")
     ]
 }

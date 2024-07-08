@@ -76,7 +76,7 @@ struct PlaceDetailsView: View {
 
 #Preview {
     NavigationStack {
-        PlaceDetailsView(place: .init(title: "some where", description: "over the rainbow"))
+        PlaceDetailsView(place: PlaceDataMock.places[0])
     }
     .environmentObject(PlaceListViewModelFactory.createForPreview())
 }

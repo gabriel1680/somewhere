@@ -13,14 +13,11 @@ struct PlaceModel: Identifiable {
     let description: String
     let image: String?
     
-    init(title: String, description: String, image: String? = nil) {
-        self.id = UUID().uuidString
-        self.title = title
-        self.description = description
-        self.image = image
+    init(_ title: String, _ description: String, _ image: String? = nil) {
+        self.init(UUID().uuidString, title, description, image)
     }
     
-    init(id: String, title: String, description: String, image: String? = nil) {
+    init(_ id: String, _ title: String, _ description: String, _ image: String? = nil) {
         self.id = id
         self.title = title
         self.description = description
@@ -28,6 +25,6 @@ struct PlaceModel: Identifiable {
     }
     
     public func update(_ title: String, _ description: String, _ image: String? = nil) -> PlaceModel {
-        return PlaceModel(id: id, title: title, description: description, image: image)
+        return PlaceModel(id, title, description, image)
     }
 }
