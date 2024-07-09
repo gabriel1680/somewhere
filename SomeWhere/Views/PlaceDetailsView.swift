@@ -28,32 +28,15 @@ struct PlaceDetailsView: View {
             VStack(alignment: .leading, spacing: 18) {
                 VStack(alignment: .leading) {
                     Text("Nome").bold()
-                    TextField("\(place.title)", text: $title)
-                        .padding(.horizontal)
-                        .frame(height: 55)
-                        .background(Color(white: 0.9, opacity: 0.7))
-                        .cornerRadius(6)
+                    BaseTextField(label: "\(place.title)", text: $title)
                 }
                 VStack(alignment: .leading) {
                     Text("Descrição").bold()
-                    TextField("\(place.description)", text: $description)
-                        .padding(.horizontal)
-                        .frame(height: 55)
-                        .background(Color(white: 0.9, opacity: 0.7))
-                        .cornerRadius(6)
+                    BaseTextField(label: "\(place.description)", text: $description)
                 }
                 Spacer()
-                Button(action: updatePlace, label: {
-                    Text("Salvar")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .fontWeight(.bold)
-                        .frame(height: 55)
-                        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-                        .background(Color.accentColor)
-                        .cornerRadius(30)
-                })
-                .disabled(isFormInvalid())
+                BaseButton("Salvar", action: updatePlace)
+                    .disabled(isFormInvalid())
             }
         }
         .navigationTitle("Detalhes")

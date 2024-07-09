@@ -21,16 +21,8 @@ struct AddPlaceFormView: View {
     var body: some View {
         ScrollView {
             VStack (spacing: 16) {
-                TextField("Nome do local", text: $titleText)
-                    .padding(.horizontal)
-                    .frame(height: 55)
-                    .background(Color(white: 0.9, opacity: 0.7))
-                    .cornerRadius(6)
-                TextField("Descrição", text: $descriptionText)
-                    .padding(.horizontal)
-                    .frame(height: 55)
-                    .background(Color(white: 0.9, opacity: 0.7))
-                    .cornerRadius(6)
+                BaseTextField(label: "Nome do local", text: $titleText)
+                BaseTextField(label: "Descrição", text: $descriptionText)
                 PhotosPicker("Adicionar imagem", selection: $imageItem, matching: .images)
                     .onChange(of: imageItem, onImageChange)
                 image?
@@ -38,17 +30,8 @@ struct AddPlaceFormView: View {
                     .scaledToFit()
                     .frame(width: 300, height: 300)
                 Spacer()
-                Button(action: addPalce, label: {
-                    Text("Salvar")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .fontWeight(.bold)
-                        .frame(height: 55)
-                        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-                        .background(Color.accentColor)
-                        .cornerRadius(30)
-                })
-                .disabled(isFormInvalid())
+                BaseButton("Salvar", action: addPalce)
+                    .disabled(isFormInvalid())
             }
             .padding(16)
         }
